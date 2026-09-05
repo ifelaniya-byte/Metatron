@@ -87,7 +87,11 @@ NaN/Inf or failing any capability are rejected (`score = -inf`).
 
 ## Remote scheduler
 
-`.github/workflows/metatron-daycare.yml`:
+The ready-to-activate workflow is
+[`.github/workflows-available/metatron-daycare.yml`](../.github/workflows-available/metatron-daycare.yml)
+(kept outside `.github/workflows/` because this branch's automation token
+cannot publish workflow files; move it into `.github/workflows/` once merged
+with workflows permission):
 
 1. **tests job** — numerical correctness + capability tests on every run
    (this is the non-negotiable gate: no promotion without reproducible

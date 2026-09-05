@@ -22,7 +22,7 @@ tooling, gates, and cheap, reproducible improvement loops (see
 | `metatron/metatron_v2.py` | The live learner: real backpropagation-through-time, Adam, capability verification, pickle/npz persistence. |
 | `daycare/` | Shutdown-proof orchestrator: trainer/evaluator adapters, durable state + lineage, Ollama-compatible bridge, source ingestion, teacher ensemble, frontier arena. |
 | `tests/` | Self-generated executable gate: finite-difference gradient checks, all-parameter gradient reach, overfit tests, end-to-end daycare promotion. |
-| `.github/workflows/metatron-daycare.yml` | Active-by-default schedule: tests first, then one hatch → train → evaluate → promote cycle. |
+| `.github/workflows-available/metatron-daycare.yml` | Active-by-default schedule: tests first, then one hatch → train → evaluate → promote cycle. Move into `.github/workflows/` after merge (the branch token can't publish workflow files). |
 | `docs/reference/` | Archived scaling templates and the original release artifacts (provenance, not live code). |
 
 ## Quick start
