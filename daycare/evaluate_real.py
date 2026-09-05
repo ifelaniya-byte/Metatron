@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic benchmark gate for a persisted Metatron candidate."""
 from __future__ import annotations
-import argparse,importlib.util,json,os,pickle,sys,zipfile
+import argparse,copy,importlib.util,json,math,os,pickle,sys,zipfile
 from pathlib import Path
 
 def find_source(root: Path) -> Path:
@@ -28,11 +28,17 @@ def main():
     if not path or not os.path.isfile(path): raise SystemExit('candidate checkpoint missing: '+path)
     mod=load_source(Path(args.root).resolve())
     with open(path,'rb') as f: model=pickle.load(f)
-    caps=mod.verify_capabilities(model); passed=sum(bool(v) for v in caps.values()); total=len(caps)
-    ids=model.encode(Path(args.text).read_text(encoding='utf-8') if args.text and Path(args.text).is_file() else mod.DEFAULT_TEXT,add_bos=True,add_eos=True)
-    loss=float(model.loss(ids))
-    capability_score=passed/max(1,total)
-    score=-loss if passed==total else float('-inf')
-    metrics={f'cap_{k}':float(v) for k,v in caps.items()}; metrics.update({'capability_score':capability_score,'eval_loss':loss,'eval_perplexity':min(1e12,__import__('math').exp(min(loss,27)))})
+    # verify_capabilities contains an intentional short-sequence training test;
+    # run it on a copy so the benchmark never mutates the candidate.
+    try: caps=mod.verify_capabilities(copy.deepcopy(model))
+    except Exception as e: caps={'benchmark_exception':False}; benchmark_error=str(e)
+    else: benchmark_error=''
+    passed=sum(bool(v) for v in caps.values()); total=len(caps)
+    text=Path(args.text).read_text(encoding='utf-8') if args.text and Path(args.text).is_file() else mod.DEFAULT_TEXT
+    ids=model.encode(text,add_bos=True,add_eos=True); loss=float(model.loss(ids))
+    finite=math.isfinite(loss); capability_score=passed/max(1,total)
+    score=-loss if passed==total and finite else float('-inf')
+    metrics={f'cap_{k}':float(v) for k,v in caps.items()}; metrics.update({'capability_score':capability_score,'eval_loss':loss,'eval_perplexity':min(1e12,math.exp(min(loss,27))) if finite else float('inf')})
+    if benchmark_error: metrics['benchmark_exception']=1.0
     print(json.dumps({'score':score,'metrics':metrics}))
 if __name__=='__main__': main()
