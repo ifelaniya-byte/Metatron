@@ -1,0 +1,28 @@
+{
+  "species": "Metatron",
+  "type": [
+    "Geometric",
+    "Machine-Learning"
+  ],
+  "nature": "Curious / Efficient",
+  "level": 1,
+  "xp": 2,
+  "generation": 2,
+  "parent": "d180c570cd88",
+  "status": "daycare",
+  "energy_policy": "minimum compute for measurable gain",
+  "moves": [
+    "Observe",
+    "Learn",
+    "Evaluate",
+    "Evolve"
+  ],
+  "stats": {
+    "learning": 23,
+    "stability": 52,
+    "efficiency": 62,
+    "reasoning": 27
+  },
+  "champion": "d180c570cd88",
+  "best_score": -2.7540087072472823
+}

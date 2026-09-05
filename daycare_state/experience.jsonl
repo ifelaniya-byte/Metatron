@@ -1,0 +1,12 @@
+{"budget": 25, "candidate": "e14152824af1", "event": "egg_hatched", "kind": "lora", "parent": "champion", "ts": 1788629074.2370517}
+{"argv": [".venv/bin/python", "daycare/train_real.py", "--root", ".", "--epochs", "3"], "candidate": "e14152824af1", "event": "train_start", "ts": 1788629074.237851}
+{"candidate": "e14152824af1", "event": "train_end", "returncode": 0, "seconds": 24.553767442703247, "ts": 1788629098.7919235}
+{"candidate": "e14152824af1", "event": "eval_start", "ts": 1788629098.792693}
+{"candidate": "e14152824af1", "event": "eval_end", "metrics": {"cap_adaptive_optimizer": 1.0, "cap_can_overfit_short_seq": 1.0, "cap_forward_pass": 1.0, "cap_generation": 1.0, "cap_gradients_reach_all_params": 1.0, "cap_learnable_routing": 1.0, "cap_multi_head_geometric_attention": 1.0, "cap_positional_encoding": 1.0, "cap_pre_norm_blocks": 1.0, "cap_residual_stream": 1.0, "cap_swiglu_ffn": 1.0, "capability_score": 1.0, "eval_loss": 3.1748686558321904, "eval_perplexity": 23.923677426506416, "eval_windows": 76.0}, "score": -3.1748686558321904, "ts": 1788629107.0801797}
+{"candidate": "e14152824af1", "event": "promoted", "previous": -Infinity, "score": -3.1748686558321904, "ts": 1788629107.0832474}
+{"budget": 25, "candidate": "d180c570cd88", "event": "egg_hatched", "kind": "curriculum", "parent": "e14152824af1", "ts": 1788629257.4040964}
+{"argv": [".venv/bin/python", "daycare/train_real.py", "--root", ".", "--epochs", "3"], "candidate": "d180c570cd88", "event": "train_start", "ts": 1788629257.4051263}
+{"candidate": "d180c570cd88", "event": "train_end", "returncode": 0, "seconds": 24.478239059448242, "ts": 1788629281.8839116}
+{"candidate": "d180c570cd88", "event": "eval_start", "ts": 1788629281.884803}
+{"candidate": "d180c570cd88", "event": "eval_end", "metrics": {"cap_adaptive_optimizer": 1.0, "cap_can_overfit_short_seq": 1.0, "cap_forward_pass": 1.0, "cap_generation": 1.0, "cap_gradients_reach_all_params": 1.0, "cap_learnable_routing": 1.0, "cap_multi_head_geometric_attention": 1.0, "cap_positional_encoding": 1.0, "cap_pre_norm_blocks": 1.0, "cap_residual_stream": 1.0, "cap_swiglu_ffn": 1.0, "capability_score": 1.0, "eval_loss": 2.7540087072472823, "eval_perplexity": 15.705464470569193, "eval_windows": 76.0}, "score": -2.7540087072472823, "ts": 1788629289.9857018}
+{"candidate": "d180c570cd88", "event": "promoted", "previous": -3.1748686558321904, "score": -2.7540087072472823, "ts": 1788629289.988657}

@@ -1,0 +1,2 @@
+{"budget": 25, "candidate_id": "e14152824af1", "checkpoint": "", "kind": "lora", "metrics": {}, "parent": "champion", "reason": "initial low-energy curriculum", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "d180c570cd88", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "e14152824af1", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}

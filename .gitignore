@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Daycare runtime state (large checkpoints are never committed; the small
+# state/ledger files are force-added by CI when it persists experience).
+daycare_state/checkpoints/
+daycare_state/champion/
+daycare_state/**/*.pkl
+daycare_state/**/*.npz
+daycare_state/numpy_diagnostics/
+_metatron_source/
+_workspace_source/
+metatron_v2_ckpts/
+
+# OS/editor
+.DS_Store

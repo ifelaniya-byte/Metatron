@@ -1,0 +1,103 @@
+name: Metatron Daycare
+
+on:
+  workflow_dispatch:
+    inputs:
+      once:
+        description: "Run one daycare cycle"
+        required: false
+        default: true
+        type: boolean
+      scale:
+        description: "Model scale (nano for CPU smoke, ultra on GPU)"
+        required: false
+        default: "nano"
+        type: choice
+        options: [nano, ultra, tiny, small, medium]
+  schedule:
+    - cron: "17 */6 * * *"
+  push:
+    branches: [main, "arena/**"]
+    paths:
+      - "metatron/**"
+      - "daycare/**"
+      - "tests/**"
+      - ".github/workflows/metatron-daycare.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  tests:
+    name: Self-generated tests (gradient gate)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy pytest
+      - name: Numerical correctness + capability tests
+        run: python -m pytest tests/ -q
+
+  daycare:
+    name: Pokemon daycare cycle
+    needs: tests
+    # The daycare is active by default on every scheduled run / dispatch.
+    # Set vars.METATRON_DISABLE_DAYCARE=true to pause it entirely; set
+    # vars.METATRON_RUNNER to a self-hosted GPU label for real training.
+    if: ${{ vars.METATRON_DISABLE_DAYCARE != 'true' }}
+    runs-on: ${{ vars.METATRON_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - name: Restore champion from previous daycare run
+        uses: actions/cache/restore@v4
+        with:
+          path: daycare_state/champion
+          key: metatron-champion-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            metatron-champion-${{ github.ref_name }}-
+            metatron-champion-
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Install minimal trainer dependency
+        run: python -m pip install --disable-pip-version-check -q numpy
+      - name: Run real Pokemon daycare cycle
+        env:
+          METATRON_DAYCARE_ROOT: daycare_state
+          METATRON_TRAINER: "python daycare/train_real.py --root ."
+          METATRON_EVALUATOR: "python daycare/evaluate_real.py --root ."
+          # CPU-hosted runs do a nano smoke cycle; a GPU runner (vars.METATRON_RUNNER)
+          # sets vars.METATRON_SCALE=ultra (or larger) for real training.
+          METATRON_SCALE: "${{ github.event.inputs.scale || vars.METATRON_SCALE || 'nano' }}"
+          METATRON_MAX_BUDGET: "${{ vars.METATRON_MAX_BUDGET || '50' }}"
+          METATRON_MIN_GAIN: "${{ vars.METATRON_MIN_GAIN || '0.002' }}"
+          METATRON_SAFE_LR: "${{ vars.METATRON_SAFE_LR || '0.0008' }}"
+          METATRON_GRAD_CLIP: "${{ vars.METATRON_GRAD_CLIP || '0.5' }}"
+        run: python daycare/metatron_daycare.py --once
+      - name: Update Pokemon character sheet
+        if: always()
+        run: python daycare/pokemon_profile.py --root daycare_state
+      - name: Save champion for next remote daycare run
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: daycare_state/champion
+          key: metatron-champion-${{ github.ref_name }}-${{ github.run_id }}
+      - name: Persist small Pokemon experience state
+        if: always()
+        run: |
+          git config user.name "metatron-daycare[bot]"
+          git config user.email "metatron-daycare[bot]@users.noreply.github.com"
+          git add -f daycare_state/state.json daycare_state/experience.jsonl daycare_state/queue.jsonl daycare_state/pokemon.json || true
+          git diff --cached --quiet || git commit -m "chore(daycare): persist Pokemon experience state"
+          git push || true
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metatron-daycare-${{ github.run_id }}
+          path: daycare_state/
+          if-no-files-found: ignore
