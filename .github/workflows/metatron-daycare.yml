@@ -1,0 +1,71 @@
+name: Metatron Daycare
+
+on:
+  workflow_dispatch:
+    inputs:
+      once:
+        description: "Run one daycare cycle"
+        required: false
+        default: true
+        type: boolean
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  daycare:
+    # Set repository variable METATRON_ENABLE_DAYCARE=true only after a
+    # persistent worker/GPU is configured. Default is intentionally off.
+    if: ${{ vars.METATRON_ENABLE_DAYCARE == 'true' }}
+    runs-on: ${{ vars.METATRON_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - name: Restore champion from previous daycare run
+        uses: actions/cache/restore@v4
+        with:
+          path: daycare_state/champion
+          key: metatron-champion-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            metatron-champion-${{ github.ref_name }}-
+            metatron-champion-
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install minimal trainer dependency
+        run: python -m pip install --disable-pip-version-check -q numpy
+      - name: Run real Pokemon daycare cycle
+        env:
+          METATRON_DAYCARE_ROOT: daycare_state
+          METATRON_TRAINER: "python daycare/train_real.py --root ."
+          METATRON_EVALUATOR: "python daycare/evaluate_real.py"
+          METATRON_MAX_BUDGET: "${{ vars.METATRON_MAX_BUDGET || '25' }}"
+          METATRON_MIN_GAIN: "${{ vars.METATRON_MIN_GAIN || '0.002' }}"
+          METATRON_SCALE: "${{ vars.METATRON_SCALE || 'ultra' }}"
+        run: python daycare/metatron_daycare.py --once
+      - name: Update Pokemon character sheet
+        if: always()
+        run: python daycare/pokemon_profile.py --root daycare_state
+      - name: Save champion for next remote daycare run
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: daycare_state/champion
+          key: metatron-champion-${{ github.ref_name }}-${{ github.run_id }}
+      - name: Persist small Pokemon experience state
+        if: always()
+        run: |
+          git config user.name "metatron-daycare[bot]"
+          git config user.email "metatron-daycare[bot]@users.noreply.github.com"
+          git add daycare_state/state.json daycare_state/experience.jsonl daycare_state/queue.jsonl daycare_state/pokemon.json || true
+          git diff --cached --quiet || git commit -m "chore(daycare): persist Pokemon experience state"
+          git push || true
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metatron-daycare-${{ github.run_id }}
+          path: daycare_state/
+          if-no-files-found: ignore
