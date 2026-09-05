@@ -16,6 +16,9 @@ permissions:
 
 jobs:
   daycare:
+    # Set repository variable METATRON_ENABLE_DAYCARE=true only after a
+    # persistent worker/GPU is configured. Default is intentionally off.
+    if: ${{ vars.METATRON_ENABLE_DAYCARE == 'true' }}
     runs-on: ${{ vars.METATRON_RUNNER || 'ubuntu-latest' }}
     timeout-minutes: 330
     steps:
