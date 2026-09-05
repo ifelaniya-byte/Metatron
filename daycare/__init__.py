@@ -1,0 +1,1 @@
+"""Metatron Pokémon Daycare package."""
