@@ -28,17 +28,21 @@ def main():
     if not path or not os.path.isfile(path): raise SystemExit('candidate checkpoint missing: '+path)
     mod=load_source(Path(args.root).resolve())
     with open(path,'rb') as f: model=pickle.load(f)
-    # verify_capabilities contains an intentional short-sequence training test;
-    # run it on a copy so the benchmark never mutates the candidate.
-    try: caps=mod.verify_capabilities(copy.deepcopy(model))
+    try: caps=mod.verify_capabilities(copy.deepcopy(model)); benchmark_error=''
     except Exception as e: caps={'benchmark_exception':False}; benchmark_error=str(e)
-    else: benchmark_error=''
     passed=sum(bool(v) for v in caps.values()); total=len(caps)
     text=Path(args.text).read_text(encoding='utf-8') if args.text and Path(args.text).is_file() else mod.DEFAULT_TEXT
-    ids=model.encode(text,add_bos=True,add_eos=True); loss=float(model.loss(ids))
-    finite=math.isfinite(loss); capability_score=passed/max(1,total)
-    score=-loss if passed==total and finite else float('-inf')
-    metrics={f'cap_{k}':float(v) for k,v in caps.items()}; metrics.update({'capability_score':capability_score,'eval_loss':loss,'eval_perplexity':min(1e12,math.exp(min(loss,27))) if finite else float('inf')})
+    # Use the same bounded context windows as training; evaluating a 1,800+ token
+    # stream at once makes this recurrent geometry numerically meaningless.
+    batches=mod.make_batches(text,model,model.cfg.context_length,model.cfg.batch_size)
+    losses=[]
+    for batch in batches:
+        for seq in batch:
+            value=float(model.loss(seq))
+            if math.isfinite(value): losses.append(value)
+    loss=sum(losses)/max(1,len(losses)); finite=bool(losses) and math.isfinite(loss)
+    capability_score=passed/max(1,total); score=-loss if passed==total and finite else float('-inf')
+    metrics={f'cap_{k}':float(v) for k,v in caps.items()}; metrics.update({'capability_score':capability_score,'eval_loss':loss,'eval_windows':float(len(losses)),'eval_perplexity':min(1e12,math.exp(min(loss,27))) if finite else float('inf')})
     if benchmark_error: metrics['benchmark_exception']=1.0
     print(json.dumps({'score':score,'metrics':metrics}))
 if __name__=='__main__': main()
