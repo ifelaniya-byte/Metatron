@@ -1,0 +1,43 @@
+name: Metatron Daycare
+
+on:
+  workflow_dispatch:
+    inputs:
+      once:
+        description: "Run one daycare cycle"
+        required: false
+        default: true
+        type: boolean
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  daycare:
+    # For real GPU training, replace with a self-hosted GPU label or your
+    # cloud runner label. GitHub-hosted CPU runners are only a wiring fallback.
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run daycare controller
+        env:
+          METATRON_DAYCARE_ROOT: daycare_state
+          METATRON_TRAINER: "${{ vars.METATRON_TRAINER }}"
+          METATRON_EVALUATOR: "${{ vars.METATRON_EVALUATOR }}"
+          METATRON_MAX_BUDGET: "${{ vars.METATRON_MAX_BUDGET || '25' }}"
+          METATRON_MIN_GAIN: "${{ vars.METATRON_MIN_GAIN || '0.002' }}"
+        run: |
+          python daycare/metatron_daycare.py --once
+      - name: Upload daycare state
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: metatron-daycare-state-${{ github.run_id }}
+          path: daycare_state/
+          if-no-files-found: ignore
