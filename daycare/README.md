@@ -1,98 +1,69 @@
 # Metatron Pokémon Daycare
 
-Metatron's **Daycare** is a persistent training/evolution controller. The Pokémon framing is the product metaphor: the model has a species, level, XP, moves/capabilities, parents, candidates, and evolution events. The underlying process remains ordinary machine learning and software evaluation.
+Metatron is treated as a **Pokémon**: it has a species, generation, XP, level, lineage, moves/capabilities, parents, candidates, and a champion. The machinery underneath is ordinary ML training, benchmarking, and software evolution.
 
-## The critical design rule
+## Shutdown-proof daycare
 
-**The laptop is not the daycare. The remote worker is.** If the laptop is shut down, local compute stops. A queued job continues only when a remote worker/CI runner/cloud GPU is running. State and checkpoints therefore live on the worker's durable storage, not only in browser memory.
+**The laptop is only the trainer's controller. The remote worker is the daycare.** Turning the laptop off stops local compute, but it does not stop a remote GPU/runner. The champion checkpoint is cached on the remote worker and the small Pokémon experience state is persisted separately.
 
 ```text
-                 METATRON POKÉMON
-                       │
-                 ┌─────▼─────┐
-                 │  DAYCARE  │  durable queue + XP + ledger
-                 └─────┬─────┘
-                       │
-          observe → hatch → train → test
-                       │              │
-                       └──────┬───────┘
-                              ▼
-                         BENCHMARK GATE
-                         /           \
-                    pass             fail
-                     │                 │
-                  promote          discard/keep
-                     │
-                 CHAMPION
-                     │
-                GGUF / Ollama
+LAPTOP / UI
+    │ observe / issue commands
+    ▼
+REMOTE POKÉMON DAYCARE
+    │
+    ├─ durable state + lineage
+    ├─ cheap experiment selection
+    ├─ real training
+    ├─ benchmark + review gate
+    └─ champion checkpoint
+             │
+             ▼
+      Ollama-compatible bridge
 ```
 
-## Low-energy policy
+## Energy policy
 
-1. **Event-driven, not busy-looping.** A worker sleeps between jobs and can instead be invoked by a scheduler.
-2. **Cheap mutation first.** Curriculum/data changes and LoRA/adapter experiments precede architecture rewrites.
-3. **Adaptive budgets.** The next experiment starts small; compute increases only after measured gains.
-4. **Checkpoint every experiment.** A crash or shutdown resumes from durable state rather than restarting training.
-5. **Benchmark before promotion.** A candidate cannot replace the champion merely because training loss improved.
-6. **Deduplicate work.** Candidate IDs and parent lineage make experiments reproducible.
-7. **No fake learning.** The orchestrator records real trainer/evaluator output; it never claims progress when no trainer ran.
+1. Event-driven scheduling; no busy spinning.
+2. Cheap curriculum experiments before expensive architecture changes.
+3. Conservative learning rate and adaptive budgets.
+4. Full model-object checkpoints so internal NumPy weights and optimizer state survive process restarts.
+5. Bounded-context evaluation to match the current Metatron recurrent geometry.
+6. Promotion only on a measurable benchmark gain.
+7. Cache/deduplicate work and keep provenance for external material.
 
-## Trainer contract
+## Real trainer
 
-Set `METATRON_TRAINER` to a command that reads:
+`daycare/train_real.py` discovers `metatron_v2.py` inside the checked-out workspace/`Metatron_Full_System.zip`, starts from the current champion when available, trains the actual NumPy Metatron implementation, and writes `model.pkl` under `METATRON_CHECKPOINT_DIR`.
 
-- `METATRON_PARENT`
-- `METATRON_CANDIDATE`
-- `METATRON_KIND`
-- `METATRON_BUDGET`
-- `METATRON_CHECKPOINT_DIR`
+The adapter intentionally clamps the initial learning rate to `1e-4` and gradient clip to `0.5` because the supplied release becomes numerically unstable at its original learning rate. Those values are configurable with `METATRON_SAFE_LR` and `METATRON_GRAD_CLIP` and should only be relaxed after the benchmark proves stability.
 
-The trainer should write resumable checkpoints under `METATRON_CHECKPOINT_DIR`.
+## Benchmark gate
 
-Set `METATRON_EVALUATOR` to a command that prints one final JSON line:
+`daycare/evaluate_real.py` runs capability checks on a copy (so evaluation cannot mutate the candidate) and measures loss on the same bounded context windows used by training. Candidates producing NaN/Inf are rejected.
 
-```json
-{"score": 0.731, "metrics": {"loss": 1.92, "coding": 0.81, "reasoning": 0.64}}
-```
+## Remote scheduler
 
-## Example
+`.github/workflows/metatron-daycare.yml` schedules a daycare cycle every six hours and can also be manually dispatched. Set `METATRON_RUNNER` to a persistent self-hosted GPU label for serious training; the GitHub-hosted CPU runner is intended for wiring/smoke tests. The champion is restored/saved with Actions cache and the small experience ledger is committed back to the branch.
+
+## Ollama
+
+The custom NumPy architecture is **not** a native Ollama/GGUF architecture, so the system does not falsely claim that it can be converted to GGUF today. Instead, `daycare/ollama_bridge.py` exposes the real persisted champion through Ollama's HTTP API shape.
+
+Run on the remote worker:
 
 ```bash
-python daycare/metatron_daycare.py --once \
-  --trainer "python train.py" \
-  --evaluator "python evaluate.py"
+python daycare/ollama_bridge.py --checkpoint daycare_state/champion/model.pkl --port 11435
 ```
 
-For an always-on remote worker:
+Then point an Ollama client at the bridge endpoint. Native `ollama create`/GGUF packaging is a separate compatibility project requiring a supported Ollama backend or a custom runtime implementation.
 
-```bash
-python daycare/metatron_daycare.py \
-  --trainer "python train.py" \
-  --evaluator "python evaluate.py"
-```
+## External learning
 
-For a safe wiring test with no training:
+`daycare/source_ingest.py` accepts explicit URLs, caps downloads, hashes content, and records provenance. `daycare/teacher_ensemble.py` optionally rotates across OpenAI-compatible teacher endpoints. Review licensing/usage rights before putting external material into training.
 
-```bash
-python daycare/metatron_daycare.py --once --dry-run
-```
+Recommended pipeline:
 
-## External learning sources
+**ingest → deduplicate → provenance/license gate → teacher/curriculum generation → cheap training → benchmark → reviewer → promote/reject → checkpoint**
 
-Ingestion should produce normalized, provenance-aware records before training:
-
-- GitHub: repository, commit SHA, path, license, retrieval time
-- Hugging Face: dataset/model/revision, license, retrieval time
-- LLM teachers: provider/model/version, prompt template, timestamp
-- Moltbook or other feeds: URL/post ID, retrieval time, provenance and usage policy
-
-Do not dump external material directly into the weights. First deduplicate, filter, attach provenance, and run a curriculum/quality gate.
-
-## Evolution policy
-
-The safest recursive loop is:
-
-**observe → propose → implement/train → test → benchmark → review → accept/reject → checkpoint**
-
-The Pokémon metaphor does not imply autonomous agency or consciousness. "Evolution" means a measurable change in model weights, adapters, data curriculum, tool configuration, or code that survives the benchmark gate.
+No component reports learning unless the trainer actually ran and the benchmark produced a valid result.
