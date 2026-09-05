@@ -42,6 +42,9 @@ jobs:
           METATRON_MIN_GAIN: "${{ vars.METATRON_MIN_GAIN || '0.002' }}"
           METATRON_SCALE: "${{ vars.METATRON_SCALE || 'ultra' }}"
         run: python daycare/metatron_daycare.py --once
+      - name: Update Pokemon character sheet
+        if: always()
+        run: python daycare/pokemon_profile.py --root daycare_state
       - name: Save champion for next remote daycare run
         if: always()
         uses: actions/cache/save@v4
@@ -53,7 +56,7 @@ jobs:
         run: |
           git config user.name "metatron-daycare[bot]"
           git config user.email "metatron-daycare[bot]@users.noreply.github.com"
-          git add daycare_state/state.json daycare_state/experience.jsonl daycare_state/queue.jsonl || true
+          git add daycare_state/state.json daycare_state/experience.jsonl daycare_state/queue.jsonl daycare_state/pokemon.json || true
           git diff --cached --quiet || git commit -m "chore(daycare): persist Pokemon experience state"
           git push || true
       - name: Upload diagnostics
