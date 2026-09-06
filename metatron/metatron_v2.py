@@ -531,9 +531,20 @@ class MetatronV2:
         self.t += 1
 
         total_sq = 0.0
+        bad_grad = False
         for p in self.all_params():
+            if not np.isfinite(p.grad).all():
+                # A non-finite gradient (overflow on a large batch) must never
+                # poison the weights; skip this update instead of NaN-ing the
+                # model and ruining a champion checkpoint.
+                bad_grad = True
+                p.grad.fill(0.0)
+                continue
             total_sq += float(np.sum(p.grad * p.grad))
-        norm = math.sqrt(total_sq + 1e-12)
+        if bad_grad:
+            self.zero_grad()
+            return
+        norm = math.sqrt(min(total_sq, 1e18) + 1e-12)
         scale = 1.0 if norm <= clip else clip / norm
 
         for p in self.all_params():
@@ -643,7 +654,8 @@ def make_batches(text, model, ctx, batch_size):
 
 
 def train(model: MetatronV2, text: str, epochs: int = None,
-          out_dir="metatron_v2_ckpts", lr: float = None, verbose: bool = True):
+          out_dir="metatron_v2_ckpts", lr: float = None,
+          lr_decay: float = 0.985, verbose: bool = True):
     cfg = model.cfg
     epochs = epochs or cfg.max_epochs
     os.makedirs(out_dir, exist_ok=True)
@@ -669,7 +681,11 @@ def train(model: MetatronV2, text: str, epochs: int = None,
                 n += len(seq) - 1
         avg = total_loss / max(1, n)
         ppl = math.exp(min(avg, 20))
-        lr *= 0.985
+        # Within-run decay; callers that resume from a checkpoint across
+        # daycare cycles pass lr_decay=1.0 so the rate stays constant (the
+        # old 0.985 compounded to ~zero after a few resume cycles and stalled
+        # the hill-climb).
+        lr *= lr_decay
         dt = time.time() - t0
         if verbose:
             print(f"Epoch {ep+1:3d}/{epochs} | loss {avg:.4f} | ppl {ppl:.2f} | "

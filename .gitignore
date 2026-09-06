@@ -17,3 +17,8 @@ metatron_v2_ckpts/
 
 # OS/editor
 .DS_Store
+
+# Math/literacy runtime state
+daycare_literate/
+daycare_state/curriculum/
+*.pkl

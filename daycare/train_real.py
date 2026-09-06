@@ -94,9 +94,26 @@ def main():
     ck = Path(args.checkpoint or
               (os.getenv("METATRON_CHECKPOINT_DIR", "") + "/model.pkl"))
     ck.parent.mkdir(parents=True, exist_ok=True)
-    parent = Path(args.parent) if args.parent else root / "daycare_state" / "champion" / "model.pkl"
 
-    if parent.is_file():
+    # Parent resolution: explicit --parent > METATRON_PARENT candidate id
+    # (resolved under the active daycare root) > the champion living in THIS
+    # daycare tree. Never silently load a different daycare root's checkpoint.
+    daycare_root = Path(os.getenv("METATRON_DAYCARE_ROOT", "daycare_state"))
+    if not daycare_root.is_absolute():
+        daycare_root = root / daycare_root
+    parent = None
+    if args.parent:
+        parent = Path(args.parent)
+    elif os.getenv("METATRON_PARENT") and os.getenv("METATRON_PARENT") not in ("champion", ""):
+        cand = daycare_root / "checkpoints" / os.getenv("METATRON_PARENT") / "model.pkl"
+        if cand.is_file():
+            parent = cand
+    if parent is None:
+        champ = daycare_root / "champion" / "model.pkl"
+        if champ.is_file():
+            parent = champ
+
+    if parent is not None and parent.is_file():
         with open(parent, "rb") as f:
             model = pickle.load(f)
         parent_desc = str(parent)
@@ -108,19 +125,31 @@ def main():
         model = mod.MetatronV2(scale)
         parent_desc = "fresh-init"
 
-    # Conservative optimizer settings: the daycare gates any later relaxation
+    # Conservative optimizer clamp; the daycare gates any later relaxation
     # behind a measured benchmark improvement.
     safe_lr = float(os.getenv("METATRON_SAFE_LR", "0.0001"))
     safe_clip = float(os.getenv("METATRON_GRAD_CLIP", "0.5"))
     model.cfg.learning_rate = min(float(model.cfg.learning_rate), safe_lr)
     model.cfg.grad_clip = min(float(model.cfg.grad_clip), safe_clip)
+    # The per-cycle learning rate actually used. Held constant across resume
+    # cycles so the hill-climb does not decay to zero (see train(lr_decay)).
+    cycle_lr = float(os.getenv("METATRON_CYCLE_LR", str(safe_lr)))
+    model.cfg.learning_rate = min(cycle_lr, safe_lr)
 
     text = (Path(args.text).read_text(encoding="utf-8")
             if args.text and Path(args.text).is_file() else mod.DEFAULT_TEXT)
-    epochs = max(1, args.epochs if args.epochs is not None
-                 else int(os.getenv("METATRON_BUDGET", "25")) // 25)
+    # Prefer an explicit epoch count (--epochs or METATRON_EPOCHS); fall back
+    # to budget//25 only when neither is given.
+    env_epochs = os.getenv("METATRON_EPOCHS")
+    if args.epochs is not None:
+        epochs = max(1, args.epochs)
+    elif env_epochs:
+        epochs = max(1, int(env_epochs))
+    else:
+        epochs = max(1, int(os.getenv("METATRON_BUDGET", "25")) // 25)
 
-    mod.train(model, text, epochs=epochs,
+    mod.train(model, text, epochs=epochs, lr=model.cfg.learning_rate,
+              lr_decay=float(os.getenv("METATRON_LR_DECAY", "1.0")),
               out_dir=str(ck.parent / "numpy_diagnostics"))
 
     tmp = ck.with_suffix(ck.suffix + ".tmp")
