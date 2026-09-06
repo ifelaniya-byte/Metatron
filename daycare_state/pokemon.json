@@ -6,9 +6,9 @@
   ],
   "nature": "Curious / Efficient",
   "level": 1,
-  "xp": 2,
-  "generation": 2,
-  "parent": "d180c570cd88",
+  "xp": 13,
+  "generation": 13,
+  "parent": "df67b3d31520",
   "status": "daycare",
   "energy_policy": "minimum compute for measurable gain",
   "moves": [
@@ -23,6 +23,6 @@
     "efficiency": 62,
     "reasoning": 27
   },
-  "champion": "d180c570cd88",
-  "best_score": -2.7540087072472823
+  "champion": "df67b3d31520",
+  "best_score": -2.4036745554522465
 }

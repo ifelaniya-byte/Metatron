@@ -1,10 +1,10 @@
 {
   "active": "",
-  "best_score": -2.7540087072472823,
+  "best_score": -2.4036745554522465,
   "candidates": [
     {
       "budget": 25,
-      "candidate_id": "e14152824af1",
+      "candidate_id": "bcb41cc76d58",
       "checkpoint": "",
       "kind": "lora",
       "metrics": {
@@ -20,18 +20,18 @@
         "cap_residual_stream": 1.0,
         "cap_swiglu_ffn": 1.0,
         "capability_score": 1.0,
-        "eval_loss": 3.1748686558321904,
-        "eval_perplexity": 23.923677426506416,
+        "eval_loss": 3.164548108452245,
+        "eval_perplexity": 23.67804170795292,
         "eval_windows": 76.0
       },
       "parent": "champion",
       "reason": "initial low-energy curriculum",
-      "score": -3.1748686558321904,
+      "score": -3.164548108452245,
       "status": "champion"
     },
     {
       "budget": 25,
-      "candidate_id": "d180c570cd88",
+      "candidate_id": "07c2c2a52d66",
       "checkpoint": "",
       "kind": "curriculum",
       "metrics": {
@@ -47,27 +47,621 @@
         "cap_residual_stream": 1.0,
         "cap_swiglu_ffn": 1.0,
         "capability_score": 1.0,
-        "eval_loss": 2.7540087072472823,
-        "eval_perplexity": 15.705464470569193,
+        "eval_loss": 2.685768566633526,
+        "eval_perplexity": 14.669471515121112,
         "eval_windows": 76.0
       },
-      "parent": "e14152824af1",
+      "parent": "bcb41cc76d58",
       "reason": "adaptive continuation",
-      "score": -2.7540087072472823,
+      "score": -2.685768566633526,
       "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "96aa9caa6b80",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.584530532360077,
+        "eval_perplexity": 13.25706386632622,
+        "eval_windows": 76.0
+      },
+      "parent": "07c2c2a52d66",
+      "reason": "adaptive continuation",
+      "score": -2.584530532360077,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "2ac4be7cd3f5",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.5418238545718945,
+        "eval_perplexity": 12.702817948648377,
+        "eval_windows": 76.0
+      },
+      "parent": "96aa9caa6b80",
+      "reason": "adaptive continuation",
+      "score": -2.5418238545718945,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "ad68c816accb",
+      "checkpoint": "",
+      "kind": "lora",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.5227333966054415,
+        "eval_perplexity": 12.462615419703623,
+        "eval_windows": 76.0
+      },
+      "parent": "2ac4be7cd3f5",
+      "reason": "adaptive continuation",
+      "score": -2.5227333966054415,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "503e29b6a9cd",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.5129719470676624,
+        "eval_perplexity": 12.341554056653818,
+        "eval_windows": 76.0
+      },
+      "parent": "ad68c816accb",
+      "reason": "adaptive continuation",
+      "score": -2.5129719470676624,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "bf54a0b2e080",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.4886046993105033,
+        "eval_perplexity": 12.044458748931113,
+        "eval_windows": 76.0
+      },
+      "parent": "503e29b6a9cd",
+      "reason": "adaptive continuation",
+      "score": -2.4886046993105033,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "151be933f4fa",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.467498111097436,
+        "eval_perplexity": 11.792905373225034,
+        "eval_windows": 76.0
+      },
+      "parent": "bf54a0b2e080",
+      "reason": "adaptive continuation",
+      "score": -2.467498111097436,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "bb426e09225e",
+      "checkpoint": "",
+      "kind": "lora",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.4553752290575126,
+        "eval_perplexity": 11.650804449156508,
+        "eval_windows": 76.0
+      },
+      "parent": "151be933f4fa",
+      "reason": "adaptive continuation",
+      "score": -2.4553752290575126,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "781b1e484454",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.447469058789705,
+        "eval_perplexity": 11.5590543791842,
+        "eval_windows": 76.0
+      },
+      "parent": "bb426e09225e",
+      "reason": "adaptive continuation",
+      "score": -2.447469058789705,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "b457953a098b",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.4431418494174353,
+        "eval_perplexity": 11.509143994961104,
+        "eval_windows": 76.0
+      },
+      "parent": "781b1e484454",
+      "reason": "adaptive continuation",
+      "score": -2.4431418494174353,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "a3609c19f211",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.421495942693008,
+        "eval_perplexity": 11.262695065469925,
+        "eval_windows": 76.0
+      },
+      "parent": "b457953a098b",
+      "reason": "adaptive continuation",
+      "score": -2.421495942693008,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "df67b3d31520",
+      "checkpoint": "",
+      "kind": "lora",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.4036745554522465,
+        "eval_perplexity": 11.063756164184378,
+        "eval_windows": 76.0
+      },
+      "parent": "a3609c19f211",
+      "reason": "adaptive continuation",
+      "score": -2.4036745554522465,
+      "status": "champion"
+    },
+    {
+      "budget": 50,
+      "candidate_id": "b653229130d5",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "086eb352946f",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "1b312424c9a7",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "56410793c9ba",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "36ab8f22c520",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "d62e2c6ea180",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "a6c79e64028f",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "20c1603f3fa3",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "e7ed97c058f7",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "f7d0a29fd610",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
+    },
+    {
+      "budget": 25,
+      "candidate_id": "32b0bbe98906",
+      "checkpoint": "",
+      "kind": "curriculum",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "parent": "df67b3d31520",
+      "reason": "adaptive continuation",
+      "score": -2.407003314871537,
+      "status": "rejected"
     }
   ],
-  "champion": "d180c570cd88",
-  "energy_spent": 49.03200650215149,
-  "generation": 2,
+  "champion": "df67b3d31520",
+  "energy_spent": 422.2469964027405,
+  "generation": 13,
   "history": [
     {
       "budget": 25,
-      "candidate": "e14152824af1",
+      "candidate": "bcb41cc76d58",
       "event": "egg_hatched",
       "kind": "lora",
       "parent": "champion",
-      "ts": 1788629074.2370517
+      "ts": 1788662931.3433044
     },
     {
       "argv": [
@@ -78,24 +672,24 @@
         "--epochs",
         "3"
       ],
-      "candidate": "e14152824af1",
+      "candidate": "bcb41cc76d58",
       "event": "train_start",
-      "ts": 1788629074.237851
+      "ts": 1788662931.3442981
     },
     {
-      "candidate": "e14152824af1",
+      "candidate": "bcb41cc76d58",
       "event": "train_end",
       "returncode": 0,
-      "seconds": 24.553767442703247,
-      "ts": 1788629098.7919235
+      "seconds": 16.775187253952026,
+      "ts": 1788662948.1198783
     },
     {
-      "candidate": "e14152824af1",
+      "candidate": "bcb41cc76d58",
       "event": "eval_start",
-      "ts": 1788629098.792693
+      "ts": 1788662948.1205356
     },
     {
-      "candidate": "e14152824af1",
+      "candidate": "bcb41cc76d58",
       "event": "eval_end",
       "metrics": {
         "cap_adaptive_optimizer": 1.0,
@@ -110,27 +704,27 @@
         "cap_residual_stream": 1.0,
         "cap_swiglu_ffn": 1.0,
         "capability_score": 1.0,
-        "eval_loss": 3.1748686558321904,
-        "eval_perplexity": 23.923677426506416,
+        "eval_loss": 3.164548108452245,
+        "eval_perplexity": 23.67804170795292,
         "eval_windows": 76.0
       },
-      "score": -3.1748686558321904,
-      "ts": 1788629107.0801797
+      "score": -3.164548108452245,
+      "ts": 1788662954.056287
     },
     {
-      "candidate": "e14152824af1",
+      "candidate": "bcb41cc76d58",
       "event": "promoted",
       "previous": -Infinity,
-      "score": -3.1748686558321904,
-      "ts": 1788629107.0832474
+      "score": -3.164548108452245,
+      "ts": 1788662954.0587008
     },
     {
       "budget": 25,
-      "candidate": "d180c570cd88",
+      "candidate": "07c2c2a52d66",
       "event": "egg_hatched",
       "kind": "curriculum",
-      "parent": "e14152824af1",
-      "ts": 1788629257.4040964
+      "parent": "bcb41cc76d58",
+      "ts": 1788662964.0608456
     },
     {
       "argv": [
@@ -141,24 +735,24 @@
         "--epochs",
         "3"
       ],
-      "candidate": "d180c570cd88",
+      "candidate": "07c2c2a52d66",
       "event": "train_start",
-      "ts": 1788629257.4051263
+      "ts": 1788662964.062039
     },
     {
-      "candidate": "d180c570cd88",
+      "candidate": "07c2c2a52d66",
       "event": "train_end",
       "returncode": 0,
-      "seconds": 24.478239059448242,
-      "ts": 1788629281.8839116
+      "seconds": 17.268263339996338,
+      "ts": 1788662981.330739
     },
     {
-      "candidate": "d180c570cd88",
+      "candidate": "07c2c2a52d66",
       "event": "eval_start",
-      "ts": 1788629281.884803
+      "ts": 1788662981.331639
     },
     {
-      "candidate": "d180c570cd88",
+      "candidate": "07c2c2a52d66",
       "event": "eval_end",
       "metrics": {
         "cap_adaptive_optimizer": 1.0,
@@ -173,22 +767,1408 @@
         "cap_residual_stream": 1.0,
         "cap_swiglu_ffn": 1.0,
         "capability_score": 1.0,
-        "eval_loss": 2.7540087072472823,
-        "eval_perplexity": 15.705464470569193,
+        "eval_loss": 2.685768566633526,
+        "eval_perplexity": 14.669471515121112,
         "eval_windows": 76.0
       },
-      "score": -2.7540087072472823,
-      "ts": 1788629289.9857018
+      "score": -2.685768566633526,
+      "ts": 1788662987.3033226
     },
     {
-      "candidate": "d180c570cd88",
+      "candidate": "07c2c2a52d66",
       "event": "promoted",
-      "previous": -3.1748686558321904,
-      "score": -2.7540087072472823,
-      "ts": 1788629289.988657
+      "previous": -3.164548108452245,
+      "score": -2.685768566633526,
+      "ts": 1788662987.3061774
+    },
+    {
+      "budget": 50,
+      "candidate": "96aa9caa6b80",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "07c2c2a52d66",
+      "ts": 1788662997.3090165
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "96aa9caa6b80",
+      "event": "train_start",
+      "ts": 1788662997.3105118
+    },
+    {
+      "candidate": "96aa9caa6b80",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 17.392112255096436,
+      "ts": 1788663014.70317
+    },
+    {
+      "candidate": "96aa9caa6b80",
+      "event": "eval_start",
+      "ts": 1788663014.7041414
+    },
+    {
+      "candidate": "96aa9caa6b80",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.584530532360077,
+        "eval_perplexity": 13.25706386632622,
+        "eval_windows": 76.0
+      },
+      "score": -2.584530532360077,
+      "ts": 1788663020.5173936
+    },
+    {
+      "candidate": "96aa9caa6b80",
+      "event": "promoted",
+      "previous": -2.685768566633526,
+      "score": -2.584530532360077,
+      "ts": 1788663020.5202134
+    },
+    {
+      "budget": 50,
+      "candidate": "2ac4be7cd3f5",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "96aa9caa6b80",
+      "ts": 1788663030.5236874
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "2ac4be7cd3f5",
+      "event": "train_start",
+      "ts": 1788663030.52535
+    },
+    {
+      "candidate": "2ac4be7cd3f5",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 17.601816415786743,
+      "ts": 1788663048.127928
+    },
+    {
+      "candidate": "2ac4be7cd3f5",
+      "event": "eval_start",
+      "ts": 1788663048.1289818
+    },
+    {
+      "candidate": "2ac4be7cd3f5",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.5418238545718945,
+        "eval_perplexity": 12.702817948648377,
+        "eval_windows": 76.0
+      },
+      "score": -2.5418238545718945,
+      "ts": 1788663053.8189855
+    },
+    {
+      "candidate": "2ac4be7cd3f5",
+      "event": "promoted",
+      "previous": -2.584530532360077,
+      "score": -2.5418238545718945,
+      "ts": 1788663053.8222523
+    },
+    {
+      "budget": 50,
+      "candidate": "ad68c816accb",
+      "event": "egg_hatched",
+      "kind": "lora",
+      "parent": "2ac4be7cd3f5",
+      "ts": 1788663063.8266869
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "ad68c816accb",
+      "event": "train_start",
+      "ts": 1788663063.8288982
+    },
+    {
+      "candidate": "ad68c816accb",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 17.897381067276,
+      "ts": 1788663081.7271557
+    },
+    {
+      "candidate": "ad68c816accb",
+      "event": "eval_start",
+      "ts": 1788663081.7284465
+    },
+    {
+      "candidate": "ad68c816accb",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.5227333966054415,
+        "eval_perplexity": 12.462615419703623,
+        "eval_windows": 76.0
+      },
+      "score": -2.5227333966054415,
+      "ts": 1788663087.6950457
+    },
+    {
+      "candidate": "ad68c816accb",
+      "event": "promoted",
+      "previous": -2.5418238545718945,
+      "score": -2.5227333966054415,
+      "ts": 1788663087.698408
+    },
+    {
+      "budget": 50,
+      "candidate": "503e29b6a9cd",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "ad68c816accb",
+      "ts": 1788663097.703383
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "503e29b6a9cd",
+      "event": "train_start",
+      "ts": 1788663097.7056985
+    },
+    {
+      "candidate": "503e29b6a9cd",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 17.498561143875122,
+      "ts": 1788663115.2053127
+    },
+    {
+      "candidate": "503e29b6a9cd",
+      "event": "eval_start",
+      "ts": 1788663115.2075484
+    },
+    {
+      "candidate": "503e29b6a9cd",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.5129719470676624,
+        "eval_perplexity": 12.341554056653818,
+        "eval_windows": 76.0
+      },
+      "score": -2.5129719470676624,
+      "ts": 1788663121.1117487
+    },
+    {
+      "candidate": "503e29b6a9cd",
+      "event": "promoted",
+      "previous": -2.5227333966054415,
+      "score": -2.5129719470676624,
+      "ts": 1788663121.1153364
+    },
+    {
+      "budget": 50,
+      "candidate": "bf54a0b2e080",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "503e29b6a9cd",
+      "ts": 1788663131.1235073
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "bf54a0b2e080",
+      "event": "train_start",
+      "ts": 1788663131.1262429
+    },
+    {
+      "candidate": "bf54a0b2e080",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 16.82514715194702,
+      "ts": 1788663147.9525266
+    },
+    {
+      "candidate": "bf54a0b2e080",
+      "event": "eval_start",
+      "ts": 1788663147.9541292
+    },
+    {
+      "candidate": "bf54a0b2e080",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.4886046993105033,
+        "eval_perplexity": 12.044458748931113,
+        "eval_windows": 76.0
+      },
+      "score": -2.4886046993105033,
+      "ts": 1788663153.5878208
+    },
+    {
+      "candidate": "bf54a0b2e080",
+      "event": "promoted",
+      "previous": -2.5129719470676624,
+      "score": -2.4886046993105033,
+      "ts": 1788663153.591684
+    },
+    {
+      "budget": 50,
+      "candidate": "151be933f4fa",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "bf54a0b2e080",
+      "ts": 1788663163.5978649
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "151be933f4fa",
+      "event": "train_start",
+      "ts": 1788663163.6010692
+    },
+    {
+      "candidate": "151be933f4fa",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 16.85424780845642,
+      "ts": 1788663180.4566894
+    },
+    {
+      "candidate": "151be933f4fa",
+      "event": "eval_start",
+      "ts": 1788663180.4583619
+    },
+    {
+      "candidate": "151be933f4fa",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.467498111097436,
+        "eval_perplexity": 11.792905373225034,
+        "eval_windows": 76.0
+      },
+      "score": -2.467498111097436,
+      "ts": 1788663185.8471847
+    },
+    {
+      "candidate": "151be933f4fa",
+      "event": "promoted",
+      "previous": -2.4886046993105033,
+      "score": -2.467498111097436,
+      "ts": 1788663185.851153
+    },
+    {
+      "budget": 50,
+      "candidate": "bb426e09225e",
+      "event": "egg_hatched",
+      "kind": "lora",
+      "parent": "151be933f4fa",
+      "ts": 1788663195.8591108
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "bb426e09225e",
+      "event": "train_start",
+      "ts": 1788663195.8621376
+    },
+    {
+      "candidate": "bb426e09225e",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 16.27461266517639,
+      "ts": 1788663212.1380465
+    },
+    {
+      "candidate": "bb426e09225e",
+      "event": "eval_start",
+      "ts": 1788663212.1398842
+    },
+    {
+      "candidate": "bb426e09225e",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.4553752290575126,
+        "eval_perplexity": 11.650804449156508,
+        "eval_windows": 76.0
+      },
+      "score": -2.4553752290575126,
+      "ts": 1788663217.6758282
+    },
+    {
+      "candidate": "bb426e09225e",
+      "event": "promoted",
+      "previous": -2.467498111097436,
+      "score": -2.4553752290575126,
+      "ts": 1788663217.6795824
+    },
+    {
+      "budget": 50,
+      "candidate": "781b1e484454",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "bb426e09225e",
+      "ts": 1788663227.6865141
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "781b1e484454",
+      "event": "train_start",
+      "ts": 1788663227.6899567
+    },
+    {
+      "candidate": "781b1e484454",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 16.76475191116333,
+      "ts": 1788663244.456311
+    },
+    {
+      "candidate": "781b1e484454",
+      "event": "eval_start",
+      "ts": 1788663244.4584274
+    },
+    {
+      "candidate": "781b1e484454",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.447469058789705,
+        "eval_perplexity": 11.5590543791842,
+        "eval_windows": 76.0
+      },
+      "score": -2.447469058789705,
+      "ts": 1788663250.4054482
+    },
+    {
+      "candidate": "781b1e484454",
+      "event": "promoted",
+      "previous": -2.4553752290575126,
+      "score": -2.447469058789705,
+      "ts": 1788663250.4091597
+    },
+    {
+      "budget": 50,
+      "candidate": "b457953a098b",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "781b1e484454",
+      "ts": 1788663260.4162886
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "b457953a098b",
+      "event": "train_start",
+      "ts": 1788663260.419581
+    },
+    {
+      "candidate": "b457953a098b",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 17.0399751663208,
+      "ts": 1788663277.461312
+    },
+    {
+      "candidate": "b457953a098b",
+      "event": "eval_start",
+      "ts": 1788663277.463277
+    },
+    {
+      "candidate": "b457953a098b",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.4431418494174353,
+        "eval_perplexity": 11.509143994961104,
+        "eval_windows": 76.0
+      },
+      "score": -2.4431418494174353,
+      "ts": 1788663282.9851692
+    },
+    {
+      "candidate": "b457953a098b",
+      "event": "promoted",
+      "previous": -2.447469058789705,
+      "score": -2.4431418494174353,
+      "ts": 1788663282.988938
+    },
+    {
+      "budget": 50,
+      "candidate": "a3609c19f211",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "b457953a098b",
+      "ts": 1788663292.9972427
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "a3609c19f211",
+      "event": "train_start",
+      "ts": 1788663293.0021994
+    },
+    {
+      "candidate": "a3609c19f211",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 16.836300373077393,
+      "ts": 1788663309.840649
+    },
+    {
+      "candidate": "a3609c19f211",
+      "event": "eval_start",
+      "ts": 1788663309.8430526
+    },
+    {
+      "candidate": "a3609c19f211",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.421495942693008,
+        "eval_perplexity": 11.262695065469925,
+        "eval_windows": 76.0
+      },
+      "score": -2.421495942693008,
+      "ts": 1788663315.621665
+    },
+    {
+      "candidate": "a3609c19f211",
+      "event": "promoted",
+      "previous": -2.4431418494174353,
+      "score": -2.421495942693008,
+      "ts": 1788663315.6259518
+    },
+    {
+      "budget": 50,
+      "candidate": "df67b3d31520",
+      "event": "egg_hatched",
+      "kind": "lora",
+      "parent": "a3609c19f211",
+      "ts": 1788663325.6346443
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "df67b3d31520",
+      "event": "train_start",
+      "ts": 1788663325.6387892
+    },
+    {
+      "candidate": "df67b3d31520",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 16.937901496887207,
+      "ts": 1788663342.5787358
+    },
+    {
+      "candidate": "df67b3d31520",
+      "event": "eval_start",
+      "ts": 1788663342.5812247
+    },
+    {
+      "candidate": "df67b3d31520",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.4036745554522465,
+        "eval_perplexity": 11.063756164184378,
+        "eval_windows": 76.0
+      },
+      "score": -2.4036745554522465,
+      "ts": 1788663348.5552495
+    },
+    {
+      "candidate": "df67b3d31520",
+      "event": "promoted",
+      "previous": -2.421495942693008,
+      "score": -2.4036745554522465,
+      "ts": 1788663348.5597246
+    },
+    {
+      "budget": 50,
+      "candidate": "b653229130d5",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663358.5691078
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "b653229130d5",
+      "event": "train_start",
+      "ts": 1788663358.573518
+    },
+    {
+      "candidate": "b653229130d5",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 17.97999405860901,
+      "ts": 1788663376.5557165
+    },
+    {
+      "candidate": "b653229130d5",
+      "event": "eval_start",
+      "ts": 1788663376.5588455
+    },
+    {
+      "candidate": "b653229130d5",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663382.924458
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "b653229130d5",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663382.927848
+    },
+    {
+      "budget": 25,
+      "candidate": "086eb352946f",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663392.939518
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "086eb352946f",
+      "event": "train_start",
+      "ts": 1788663392.9449925
+    },
+    {
+      "candidate": "086eb352946f",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 18.275078535079956,
+      "ts": 1788663411.222749
+    },
+    {
+      "candidate": "086eb352946f",
+      "event": "eval_start",
+      "ts": 1788663411.2255805
+    },
+    {
+      "candidate": "086eb352946f",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663417.5603588
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "086eb352946f",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663417.5630782
+    },
+    {
+      "budget": 25,
+      "candidate": "1b312424c9a7",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663427.5740476
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "1b312424c9a7",
+      "event": "train_start",
+      "ts": 1788663427.5786455
+    },
+    {
+      "candidate": "1b312424c9a7",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 18.422912120819092,
+      "ts": 1788663446.0038285
+    },
+    {
+      "candidate": "1b312424c9a7",
+      "event": "eval_start",
+      "ts": 1788663446.0070655
+    },
+    {
+      "candidate": "1b312424c9a7",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663452.9841928
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "1b312424c9a7",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663452.9872768
+    },
+    {
+      "budget": 25,
+      "candidate": "56410793c9ba",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663462.9988072
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "56410793c9ba",
+      "event": "train_start",
+      "ts": 1788663463.0041442
+    },
+    {
+      "candidate": "56410793c9ba",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 18.735371828079224,
+      "ts": 1788663481.7421317
+    },
+    {
+      "candidate": "56410793c9ba",
+      "event": "eval_start",
+      "ts": 1788663481.745385
+    },
+    {
+      "candidate": "56410793c9ba",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663488.2475765
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "56410793c9ba",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663488.2504501
+    },
+    {
+      "budget": 25,
+      "candidate": "36ab8f22c520",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663498.261422
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "36ab8f22c520",
+      "event": "train_start",
+      "ts": 1788663498.2675414
+    },
+    {
+      "candidate": "36ab8f22c520",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 18.38666081428528,
+      "ts": 1788663516.6571267
+    },
+    {
+      "candidate": "36ab8f22c520",
+      "event": "eval_start",
+      "ts": 1788663516.6601508
+    },
+    {
+      "candidate": "36ab8f22c520",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663522.9829738
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "36ab8f22c520",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663522.986258
+    },
+    {
+      "budget": 25,
+      "candidate": "d62e2c6ea180",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663532.9994364
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "d62e2c6ea180",
+      "event": "train_start",
+      "ts": 1788663533.005807
+    },
+    {
+      "candidate": "d62e2c6ea180",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 17.79601263999939,
+      "ts": 1788663550.804796
+    },
+    {
+      "candidate": "d62e2c6ea180",
+      "event": "eval_start",
+      "ts": 1788663550.8081584
+    },
+    {
+      "candidate": "d62e2c6ea180",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663557.0130749
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "d62e2c6ea180",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663557.016776
+    },
+    {
+      "budget": 25,
+      "candidate": "a6c79e64028f",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663567.0308855
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "a6c79e64028f",
+      "event": "train_start",
+      "ts": 1788663567.0374668
+    },
+    {
+      "candidate": "a6c79e64028f",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 17.551862478256226,
+      "ts": 1788663584.5924816
+    },
+    {
+      "candidate": "a6c79e64028f",
+      "event": "eval_start",
+      "ts": 1788663584.599283
+    },
+    {
+      "candidate": "a6c79e64028f",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663590.9245882
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "a6c79e64028f",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663590.927834
+    },
+    {
+      "budget": 25,
+      "candidate": "20c1603f3fa3",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663600.9405687
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "20c1603f3fa3",
+      "event": "train_start",
+      "ts": 1788663600.9473095
+    },
+    {
+      "candidate": "20c1603f3fa3",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 18.582687854766846,
+      "ts": 1788663619.5332954
+    },
+    {
+      "candidate": "20c1603f3fa3",
+      "event": "eval_start",
+      "ts": 1788663619.5372565
+    },
+    {
+      "candidate": "20c1603f3fa3",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663625.794237
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "20c1603f3fa3",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663625.7984748
+    },
+    {
+      "budget": 25,
+      "candidate": "e7ed97c058f7",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663635.813056
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "e7ed97c058f7",
+      "event": "train_start",
+      "ts": 1788663635.820198
+    },
+    {
+      "candidate": "e7ed97c058f7",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 18.229201793670654,
+      "ts": 1788663654.0529282
+    },
+    {
+      "candidate": "e7ed97c058f7",
+      "event": "eval_start",
+      "ts": 1788663654.056898
+    },
+    {
+      "candidate": "e7ed97c058f7",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663660.3457224
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "e7ed97c058f7",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663660.3499823
+    },
+    {
+      "budget": 25,
+      "candidate": "f7d0a29fd610",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663670.3663886
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "f7d0a29fd610",
+      "event": "train_start",
+      "ts": 1788663670.373899
+    },
+    {
+      "candidate": "f7d0a29fd610",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 18.093746185302734,
+      "ts": 1788663688.4715705
+    },
+    {
+      "candidate": "f7d0a29fd610",
+      "event": "eval_start",
+      "ts": 1788663688.4760382
+    },
+    {
+      "candidate": "f7d0a29fd610",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663694.8588507
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "f7d0a29fd610",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663694.8631098
+    },
+    {
+      "budget": 25,
+      "candidate": "32b0bbe98906",
+      "event": "egg_hatched",
+      "kind": "curriculum",
+      "parent": "df67b3d31520",
+      "ts": 1788663704.8833447
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "daycare/train_real.py",
+        "--root",
+        ".",
+        "--epochs",
+        "3"
+      ],
+      "candidate": "32b0bbe98906",
+      "event": "train_start",
+      "ts": 1788663704.891544
+    },
+    {
+      "candidate": "32b0bbe98906",
+      "event": "train_end",
+      "returncode": 0,
+      "seconds": 18.22721004486084,
+      "ts": 1788663723.1226714
+    },
+    {
+      "candidate": "32b0bbe98906",
+      "event": "eval_start",
+      "ts": 1788663723.1283357
+    },
+    {
+      "candidate": "32b0bbe98906",
+      "event": "eval_end",
+      "metrics": {
+        "cap_adaptive_optimizer": 1.0,
+        "cap_can_overfit_short_seq": 1.0,
+        "cap_forward_pass": 1.0,
+        "cap_generation": 1.0,
+        "cap_gradients_reach_all_params": 1.0,
+        "cap_learnable_routing": 1.0,
+        "cap_multi_head_geometric_attention": 1.0,
+        "cap_positional_encoding": 1.0,
+        "cap_pre_norm_blocks": 1.0,
+        "cap_residual_stream": 1.0,
+        "cap_swiglu_ffn": 1.0,
+        "capability_score": 1.0,
+        "eval_loss": 2.407003314871537,
+        "eval_perplexity": 11.100646111544838,
+        "eval_windows": 76.0
+      },
+      "score": -2.407003314871537,
+      "ts": 1788663729.2425356
+    },
+    {
+      "best": -2.4036745554522465,
+      "candidate": "32b0bbe98906",
+      "event": "rejected",
+      "score": -2.407003314871537,
+      "ts": 1788663729.246824
     }
   ],
   "level": 1,
   "schema": 1,
-  "xp": 2
+  "xp": 13
 }

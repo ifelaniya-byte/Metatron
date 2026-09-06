@@ -1,2 +1,24 @@
-{"budget": 25, "candidate_id": "e14152824af1", "checkpoint": "", "kind": "lora", "metrics": {}, "parent": "champion", "reason": "initial low-energy curriculum", "score": 0.0, "status": "queued"}
-{"budget": 25, "candidate_id": "d180c570cd88", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "e14152824af1", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "bcb41cc76d58", "checkpoint": "", "kind": "lora", "metrics": {}, "parent": "champion", "reason": "initial low-energy curriculum", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "07c2c2a52d66", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "bcb41cc76d58", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "96aa9caa6b80", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "07c2c2a52d66", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "2ac4be7cd3f5", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "96aa9caa6b80", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "ad68c816accb", "checkpoint": "", "kind": "lora", "metrics": {}, "parent": "2ac4be7cd3f5", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "503e29b6a9cd", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "ad68c816accb", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "bf54a0b2e080", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "503e29b6a9cd", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "151be933f4fa", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "bf54a0b2e080", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "bb426e09225e", "checkpoint": "", "kind": "lora", "metrics": {}, "parent": "151be933f4fa", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "781b1e484454", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "bb426e09225e", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "b457953a098b", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "781b1e484454", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "a3609c19f211", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "b457953a098b", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "df67b3d31520", "checkpoint": "", "kind": "lora", "metrics": {}, "parent": "a3609c19f211", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 50, "candidate_id": "b653229130d5", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "086eb352946f", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "1b312424c9a7", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "56410793c9ba", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "36ab8f22c520", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "d62e2c6ea180", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "a6c79e64028f", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "20c1603f3fa3", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "e7ed97c058f7", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "f7d0a29fd610", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
+{"budget": 25, "candidate_id": "32b0bbe98906", "checkpoint": "", "kind": "curriculum", "metrics": {}, "parent": "df67b3d31520", "reason": "adaptive continuation", "score": 0.0, "status": "queued"}
