@@ -57,3 +57,11 @@
 - METRIC: speech curriculum: 4 public-domain speeches, 24 cloze quiz pairs; untrained quiz_acc 0.0, recite_char 0.003
 - REPRODUCE: `python daycare/speech_literacy.py --build-corpus daycare_state/speech_corpus.txt`
 - EVIDENCE: observation (no ability claimed)
+
+### n20260906205157-05 — 2026-09-06 20:51Z
+
+- DATE: 2026-09-06 20:51Z
+- OBSERVATION: Game of Time: continuous alternating English paragraphs streamed with ring-memory carried across windows via stateful truncated BPTT. Brain states recorded BEFORE the strike word land. Held-out linear probe reads strike-vs-calm at 1.00 on unseen paragraphs across 5 seeds; phase-flipped stream (start on calm) still 1.00 -> cue is carried timed memory, not fixed parity position; shuffled-label control at chance. Probe-driven shield survives unseen strikes 1.00. LIMITATION: model's own next-char head does not yet route the anticipatory ring state to output (raw char shield ~chance) - same internal-routing wall as arithmetic/speech-quiz. Time is SENSED in the brain but not yet ACTED ON by the output head.
+- METRIC: time_game_heldout_probe_acc=1.0; time_game_phaseflip_probe=1.0; time_game_shuffled_control=0.38-0.79
+- REPRODUCE: `.venv/bin/python -m pytest tests/test_time_game.py`
+- EVIDENCE: observation (no ability claimed)

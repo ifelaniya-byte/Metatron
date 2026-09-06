@@ -23,3 +23,4 @@ daycare_literate/
 daycare_state/curriculum/
 *.pkl
 daycare_state/speech_corpus.txt
+daycare_state/time_game/

@@ -46,9 +46,9 @@ Each line carries an ability id; the JOURNAL entry has the metric and reproducti
 <!-- BEGIN:ACTIVE_FRONTIER -->
 ## What I am working on right now
 
-Learn to key answers to questions/operands. Order of drills: arithmetic identity facts (x+0=x), then the speech quiz pairs, each gated by exact match, then full recitation.
+Route the anticipatory ring-memory state to the output head: time rhythm is already encoded in carried states (held-out + phase-flip probe 1.00, shuffled control chance, probe-shield survives) but the model's OWN next-char shield stays at chance. Drill order: (1) train output head against the alternation target so raw char shield detects strikes on unseen streams; (2) then revisit arithmetic x+0=x and speech-quiz keying, which share the same information-present-but-not-routed wall.
 
-*Current measured anchor: speech quiz_acc 0.0 and arithmetic identity 0/6 at the nano scale; both are conditioning tasks pending the same fix.*
+*Current measured anchor: time_game_char_shield_acc >= 0.95 on unseen (currently ~0.50).*
 <!-- END:ACTIVE_FRONTIER -->
 
 ---
