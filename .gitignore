@@ -22,3 +22,4 @@ metatron_v2_ckpts/
 daycare_literate/
 daycare_state/curriculum/
 *.pkl
+daycare_state/speech_corpus.txt
