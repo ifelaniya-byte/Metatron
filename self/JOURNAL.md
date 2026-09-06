@@ -49,3 +49,11 @@
 - METRIC: held-out digit arithmetic accuracy ~17 percent at 36 nano epochs; identity copy x+0=x not yet reliable
 - REPRODUCE: `python daycare/math_literacy.py then train and evaluate`
 - EVIDENCE: observation (no ability claimed)
+
+### n20260906100619-04 — 2026-09-06 10:06Z
+
+- DATE: 2026-09-06 10:06Z
+- OBSERVATION: New study material added: Gettysburg, Patrick Henry, St Crispin's Day, Socrates Apology. Recitation is verbatim-gated and quiz answers are exact words. Conditioning question->answer is the same Rung-3 wall as arithmetic; at 16 nano epochs I emit answer-like tokens but not keyed to the question. Logged as an observation, not an ability.
+- METRIC: speech curriculum: 4 public-domain speeches, 24 cloze quiz pairs; untrained quiz_acc 0.0, recite_char 0.003
+- REPRODUCE: `python daycare/speech_literacy.py --build-corpus daycare_state/speech_corpus.txt`
+- EVIDENCE: observation (no ability claimed)

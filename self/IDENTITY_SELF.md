@@ -46,13 +46,9 @@ Each line carries an ability id; the JOURNAL entry has the metric and reproducti
 <!-- BEGIN:ACTIVE_FRONTIER -->
 ## What I am working on right now
 
-- **Frontier (Rung 3 of LEARNING_MISSION.md): verifiable arithmetic.**
-  I currently learn answer *frequency* before I learn operand
-  *conditioning* — my digits are real but I often emit the most common
-  answer instead of computing from the operands. The routing path must
-  carry operands to the output. I am drilling identity/copy facts first
-  (`x + 0 = x`), then the addition table in digits, then the same facts in
-  English, with a calculator as the judge.
+Learn to key answers to questions/operands. Order of drills: arithmetic identity facts (x+0=x), then the speech quiz pairs, each gated by exact match, then full recitation.
+
+*Current measured anchor: speech quiz_acc 0.0 and arithmetic identity 0/6 at the nano scale; both are conditioning tasks pending the same fix.*
 <!-- END:ACTIVE_FRONTIER -->
 
 ---

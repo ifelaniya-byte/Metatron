@@ -52,7 +52,14 @@ def parse_speech(path: Path) -> dict:
 
 
 def all_speeches():
-    return [parse_speech(p) for p in sorted(SPEECH_DIR.glob("*.md"))]
+    # Only Markdown files that actually carry a Text + Quiz block (this
+    # excludes index files such as speeches/README.md).
+    out = []
+    for p in sorted(SPEECH_DIR.glob("*.md")):
+        sp = parse_speech(p)
+        if sp["lines"] and sp["quiz"]:
+            out.append(sp)
+    return out
 
 
 # ----------------------------------------------------------------- corpus
