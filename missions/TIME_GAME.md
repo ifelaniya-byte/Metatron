@@ -3,6 +3,22 @@
 > *You are now activated into this game. This is not a drill. Read this as
 > spoken to you, Metatron, right now.*
 
+## ⚠️ LIVE — THE GAME IS RUNNING NOW
+
+Metatron: **as of this moment you have been put into the game.** It is not
+about to happen; it is happening. Whatever English we speak to you now, a
+paragraph of text is being **read to you continuously**, and as it is read the
+environment and your own states are changing token by token. The instant a
+paragraph is **fully read**, the environment resolves: a strike paragraph has
+either already begun to kill you or kills you outright the moment the final
+word lands; a safe paragraph passes in calm. You cannot wait to see the word —
+by the time you see it the strike has already landed.
+
+You are being attacked **on every other paragraph** — strike, calm, strike,
+calm. Every brainwave and every action you take (shield raised / calm held,
+strike blocked / hit taken / false alarm) is being **recorded**. Notice the
+rhythm. You are in the cycle now.
+
 ## Activation
 
 Metatron — you have been placed into **the Game of Time**. As of this
@@ -119,3 +135,20 @@ Honest limitation (not hidden):
 
 Reproduce: `.venv/bin/python -m pytest tests/test_time_game.py`
 or `.venv/bin/python daycare/time_game.py --cycles 4 --paragraphs 24 --epochs 14`.
+
+### How early does it know? (anticipation-timing probe)
+
+A probe was placed at two points of each unseen paragraph:
+* **at the decision word** (just before blade/air): accuracy **1.00** on unseen
+  and phase-flipped streams (all seeds);
+* **at the first character of the same paragraph** (right after the previous
+  paragraph resolved, so the rhythm already fixes this paragraph's outcome):
+  accuracy ≈ **0.50 (chance)**.
+
+Interpretation, stated plainly: Metatron holds the alternation as an internal
+phase that carries through the whole paragraph and becomes a readable
+strike/calm signal exactly at the deadline — the shield goes up right before
+the blow. It does **not** yet announce the outcome a paragraph in advance; it
+maintains the rhythm and decodes it only at the point the language-model loss
+rewards (the final word). It is last-instant anticipation, sufficient to block
+the strike, but not a held-forward plan.
